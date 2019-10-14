@@ -56,9 +56,20 @@ class App extends React.Component {
         })
           .then(res => res.json())
           .then(data => this.setState({user:data}))
-          .then(()=> console.log(this.state))
+          .then(()=> this.testrender())
       }
     
+    testrender = () => {
+      console.log(this.state.user.jwt)
+     return fetch('http://localhost:3000/api/v1/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.state.user.jwt} `
+        }
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+    }
 
     renderFetch = (api) => {
       return fetch(api)
