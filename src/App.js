@@ -17,19 +17,47 @@ class App extends React.Component {
       }
     }
 
-    login = (e,login) => {
-      e.preventDefault()
-      let data = {'username':login}
-      return fetch(`${API}`,{
-        method: 'Post',
+
+    login = (e, login) => {
+    e.preventDefault()
+      fetch('http://localhost:3000/api/v1/users', {
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          user: {
+            username: login.username,
+            password: login.password,
+            bio: 'King of Flavortown, USA',
+            avatar: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Guy_Fieri_at_Guantanamo_2.jpg'
+          }
+        })
       })
-      .then(res=>res.json())
-      .then(data=>console.log(data))
+        .then(res => res.json())
+        .then(data => this.setState({user:data}))
+        .then(()=> console.log(this.state))
     }
+    auth = (e, login) => {
+      e.preventDefault()
+        fetch('http://localhost:3000/api/v1/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            user: {
+              username: login.username,
+              password: login.password
+            }
+          })
+        })
+          .then(res => res.json())
+          .then(data => this.setState({user:data}))
+          .then(()=> console.log(this.state))
+      }
     
 
     renderFetch = (api) => {
@@ -69,7 +97,7 @@ class App extends React.Component {
  
       <div>{
         this.state.user?<div><Plants plants={this.state.plants} update={this.update}></Plants>
-        <Form></Form></div>:<Login login={this.login}></Login>
+        <Form></Form></div>:<Login login={this.login} auth={this.auth}></Login>
       }
       </div>
     )

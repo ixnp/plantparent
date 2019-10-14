@@ -3,6 +3,7 @@ import React from 'react'
 class Login extends React.Component {
     state = {
       name: 'username',
+      password: 'password'
       
     }
 
@@ -20,8 +21,10 @@ class Login extends React.Component {
         return(
             <form>
                 <input onChange={(e)=>this.handelChange(e)}  name="username" type="text"></input>
-                <button onClick={(e)=>{this.props.login(e,this.state.username)}}>submit</button>
-       
+                <input onChange={(e)=>this.handelChange(e)}  name="password" type="text"></input>
+                <button onClick={(e)=>{this.props.login(e,this.state)}}>sign up</button>
+                <button onClick={(e)=>{this.props.auth(e,this.state)}}>login</button>
+
             </form>
         )
     }
