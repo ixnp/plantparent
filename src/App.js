@@ -17,18 +17,39 @@ class App extends React.Component {
       }
     }
 
-    login = (e,login) => {
+    // login = (e,login) => {
+    //   e.preventDefault()
+    //   let data = {'username':login}
+    //   return fetch(`${API}`,{
+    //     method: 'Post',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    //   })
+    //   .then(res=>res.json())
+    //   .then(data=>console.log(data))
+    // }
+    login = (e, login) => {
+      console.log(login.name, login.password, login)
       e.preventDefault()
-      let data = {'username':login}
-      return fetch(`${API}`,{
-        method: 'Post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(res=>res.json())
-      .then(data=>console.log(data))
+      fetch('http://localhost:3000/api/v1/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: login.username,
+      password: login.password,
+      bio: 'King of Flavortown, USA',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Guy_Fieri_at_Guantanamo_2.jpg'
+    }
+  })
+})
+  .then(r => r.json())
+  .then(console.log)
     }
     
 
