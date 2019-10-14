@@ -20,8 +20,6 @@ class App extends React.Component {
     login = (e,login) => {
       e.preventDefault()
       let data = {'username':login}
-      console.log(JSON.stringify(data))
-
       return fetch(`${API}`,{
         method: 'Post',
         headers: {
