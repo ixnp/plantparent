@@ -22,8 +22,9 @@ class Login extends React.Component {
             <form>
                 <input onChange={(e)=>this.handelChange(e)}  name="username" type="text"></input>
                 <input onChange={(e)=>this.handelChange(e)}  name="password" type="text"></input>
-                <button onClick={(e)=>{this.props.login(e,this.state)}}>submit</button>
-       
+                <button onClick={(e)=>{this.props.login(e,this.state)}}>sign up</button>
+                <button onClick={(e)=>{this.props.auth(e,this.state)}}>login</button>
+
             </form>
         )
     }
