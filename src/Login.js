@@ -19,13 +19,19 @@ class Login extends React.Component {
     }
     render(){
         return(
-            <form>
-                <input onChange={(e)=>this.handelChange(e)}  name="username" type="text"></input>
-                <input onChange={(e)=>this.handelChange(e)}  name="password" type="text"></input>
-                <button onClick={(e)=>{this.props.login(e,this.state)}}>sign up</button>
-                <button onClick={(e)=>{this.props.auth(e,this.state)}}>login</button>
-
-            </form>
+            <div className="form-container">
+                <h1>Plant Parent</h1>
+                <div>
+                <form className="login-form">
+                    <input onChange={(e)=>this.handelChange(e)}  name="username" type="text" placeholder="username"></input>
+                    <input onChange={(e)=>this.handelChange(e)}  name="password" type="text" placeholder="password"></input>
+                    <div className="btn">
+                    <button onClick={(e)=>{this.props.login(e,this.state)}}>sign up</button>
+                    <button onClick={(e)=>{this.props.auth(e,this.state)}}>login</button>
+                    </div>
+                </form>
+                </div>
+            </div>
         )
     }
 
