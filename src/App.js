@@ -3,8 +3,11 @@ import './App.css'
 import Plants from './Plants.js'
 import Form from './Form.js'
 import Login from './Login.js'
+import './scss/main.scss';
+
 
 let API = 'http://localhost:3000/plants'
+// let API = ''http://localhost:3000/api/v1/profile''
 
 class App extends React.Component {
   state = {
@@ -56,27 +59,27 @@ class App extends React.Component {
         })
           .then(res => res.json())
           .then(data => this.setState({user:data}))
-          .then(()=> this.testrender())
+          .then(()=> this.datarender())
       }
     
-    testrender = () => {
+    datarender = () => {
       console.log(this.state.user.jwt)
-     return fetch('http://localhost:3000/api/v1/profile', {
+     return fetch(API, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${this.state.user.jwt} `
         }
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({plants:data}))
     }
 
-    renderFetch = (api) => {
-      return fetch(api)
-      .then(res => res.json())
-      .then(data =>  this.setState({plants:data}))
+    // renderFetch = (api) => {
+    //   return fetch(api)
+    //   .then(res => res.json())
+    //   .then(data =>  this.setState({plants:data}))
       
-    }
+    // }
 
     update = (data,id) => {
       console.log(data,id)
