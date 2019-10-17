@@ -10,7 +10,7 @@ const PlantCard = ({plant,update}) => {
     let fulldate =`${day}/${month}/${year} ${hours}:${minutes}`
     
     return(
-        <div>
+        <div className="plant-card-container">
             <img src={plant.img}></img>
             <h3>{plant.name}</h3>
             <div>{plant.lastwatered}</div>

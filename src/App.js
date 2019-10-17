@@ -15,6 +15,7 @@ class App extends React.Component {
     user:null
   }
     componentDidMount = () => {
+    console.log(localStorage.getItem('user'))
       if(this.state.user){
         this.renderFetch(API)
       }
@@ -58,7 +59,15 @@ class App extends React.Component {
           })
         })
           .then(res => res.json())
-          .then(data => this.setState({user:data}))
+          .then(data =>  {
+            console.log(data)
+          this.setState({user:data})
+        })
+          .then(data => {
+            //need to run rails server//
+            console.log(this.state.user)
+            localStorage.setItem('user','test')
+          })
           .then(()=> this.datarender())
       }
     
