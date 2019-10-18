@@ -7,7 +7,6 @@ const Plants = (props) => {
         <div>
             {props.plants?props.plants.map(item=> <PlantCard plant={item} update={props.update}></PlantCard>):null}
         </div>
-
     )
 }
 export default Plants;

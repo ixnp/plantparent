@@ -61,7 +61,7 @@ class App extends React.Component {
           .then(data => this.setState({user:data}))
           .then(()=> this.datarender())
       }
-    
+
     datarender = () => {
       console.log(this.state.user.jwt)
      return fetch(API, {
@@ -78,7 +78,7 @@ class App extends React.Component {
     //   return fetch(api)
     //   .then(res => res.json())
     //   .then(data =>  this.setState({plants:data}))
-      
+
     // }
 
     update = (data,id) => {
@@ -86,16 +86,16 @@ class App extends React.Component {
       let updatedPlantsArr = this.state.plants
       let updatedPlant = ''
       updatedPlantsArr.map(item => {
-       
+
         if(item.id == id){
           item.lastwatered = data;
           updatedPlant = item
         }
       });
-    
-      
+
+
       this.setState({plants:updatedPlantsArr})
-    
+
       return fetch(`${API}/${id}`,{
         method: 'PUT',
         headers: {
@@ -106,9 +106,9 @@ class App extends React.Component {
       .then(res=>res.json())
     }
   render(){
-   
+
     return(
- 
+
       <div>{
         this.state.user?<div><Plants plants={this.state.plants} update={this.update}></Plants>
         <Form></Form></div>:<Login login={this.login} auth={this.auth}></Login>
