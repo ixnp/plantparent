@@ -4,7 +4,7 @@ class PlantSerializer < ActiveModel::Serializer
         if self.object.user
           { id: self.object.user.id,
             name: self.object.user.username,
-            bio: self.object.user.username}
+            bio: self.object.user.bio}
         else
           { id: 1,
             name: "soundarya",
