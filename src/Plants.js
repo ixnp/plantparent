@@ -1,13 +1,22 @@
 import React from 'react'
 import PlantCard from './PlantCrard'
+import Notifications from './Notifications'
 
-const Plants = (props) => {
-    console.log(props.plants)
-    return(
-        <div>
-            {props.plants?props.plants.map(item=> <PlantCard plant={item} update={props.update}></PlantCard>):null}
-        </div>
-        
-    )
+class Plants extends React.Component {
+    
+
+  
+
+ 
+    render(){
+        return(
+            <div>
+                <Notifications></Notifications>
+                {this.props.plants?this.props.plants.map(item=> <PlantCard plant={item} update={this.props.update} ></PlantCard>):null}
+            </div>
+            
+        )
+    }
+
 }
 export default Plants;
