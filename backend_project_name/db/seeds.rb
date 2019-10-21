@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([ name: 'Star Wars'   name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)Plant.create(id: : 1name: "monstera",img: "https://cdn.shopify.com/s/files/1/1881/4693/products/20180627-20180627-P1290052_1000x.jpg?v=1530133869",lastwatered: "0/9/2019 12:14",frequency: 6, user: [soundarya,steven].sample)
-steven = User.create(username: "steven universe",bio: "The best show ever")
+steven = User.create(username: "steven universe", bio: "The best show ever")
 soundarya = User.create(username: "steven universe",bio: "The best show ever")
 
 Plant.create(name: "monstera",img: "https://cdn.shopify.com/s/files/1/1881/4693/products/20180627-20180627-P1290052_1000x.jpg?v=1530133869",lastwatered: "0/9/2019 12:15",frequency: 6, user: [soundarya,steven].sample)
