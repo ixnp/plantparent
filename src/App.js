@@ -42,6 +42,7 @@ class App extends React.Component {
         .then(res => res.json())
         .then(data => this.setState({user:data}))
         .then(()=> console.log(this.state))
+        .catch(error => console.error('login: ',error))
     }
     auth = (e, login) => {
       e.preventDefault()
@@ -69,6 +70,7 @@ class App extends React.Component {
             localStorage.setItem('user','test')
           })
           .then(()=> this.datarender())
+          .catch(error => console.error('auth: ',error))
       }
 
     datarender = () => {
@@ -81,6 +83,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => this.setState({plants:data}))
+      .catch(error => console.error('datarender: ',error))
     }
 
     // renderFetch = (api) => {
