@@ -4,7 +4,7 @@ import Plants from './Plants.js'
 import Form from './Form.js'
 import Login from './Login.js'
 import './scss/main.scss';
-
+import tempPlants from './db.json'
 
 let API = 'http://localhost:3000/plants'
 // let API = ''http://localhost:3000/api/v1/profile''
@@ -19,6 +19,7 @@ class App extends React.Component {
       if(this.state.user){
         this.renderFetch(API)
       }
+ 
     }
 
 
@@ -62,19 +63,20 @@ class App extends React.Component {
           .then(res => res.json())
           .then(data =>  {
             console.log(data)
+            
           this.setState({user:data})
         })
           .then(data => {
             //need to run rails server//
             console.log(this.state.user)
-            localStorage.setItem('user','test')
+            localStorage.setItem('user',this.state.user)
           })
           .then(()=> this.datarender())
           .catch(error => console.error('auth: ',error))
       }
 
     datarender = () => {
-      console.log(this.state.user.jwt)
+      console.log(this.state.user)
      return fetch(API, {
         method: 'GET',
         headers: {
@@ -82,7 +84,14 @@ class App extends React.Component {
         }
       })
       .then(res => res.json())
-      .then(data => this.setState({plants:data}))
+      .then(data => {
+        if(data.status !== 400){
+          this.setState({plants:tempPlants.plants})
+        }else {
+          this.setState({plants:data})
+        }
+
+      })
       .catch(error => console.error('datarender: ',error))
     }
 
