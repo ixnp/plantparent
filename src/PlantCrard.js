@@ -1,4 +1,8 @@
 import React from 'react'
+import { faTint } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 
 const PlantCard = ({plant,update}) => {
     let date = new Date();
@@ -11,10 +15,13 @@ const PlantCard = ({plant,update}) => {
     
     return(
         <div className="plant-card-container">
+           
             <img src={plant.img}></img>
+            <div className="plant-card-info">
             <h3>{plant.name}</h3>
             <div>{plant.lastwatered}</div>
-            <button onClick={()=>update(fulldate,plant.id)}>water</button>
+            <button onClick={()=>update(fulldate,plant.id)}><FontAwesomeIcon icon={faTint} /></button>
+            </div>
         </div>
     )
 
